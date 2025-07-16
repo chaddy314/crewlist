@@ -323,6 +323,12 @@ function addRole(roleName: string, roleCategory: Category) {
     });
     return;
   }
+
+  // Ensure roleCategory is a number (Category enum)
+  if (typeof roleCategory === 'string') {
+    roleCategory = (Category as any)[roleCategory] as Category;
+  }
+
   roles.value.push(new Role(roleName, roleCategory));
   toast.add({
     title: 'Crew Members',
