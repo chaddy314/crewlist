@@ -1,6 +1,7 @@
 # Crewlist
 
-Small test project using Nuxt UI.
+Assign Emergency Roles for a small to medium sized sailing crew and export the list as PDF.
+This is a small test project using Nuxt UI.
 
 ## Setup
 
@@ -20,21 +21,35 @@ Start the development server on `http://localhost:3000`:
 pnpm run dev
 ```
 
+
+## Docker
+
+Build docker image
+
+```bash
+docker build . -t crewlist-image
+```
+
+Run docker container:
+
+```bash
+docker run --name crewlist-container -p 3000:80 -d crewlist-image
+```
+The site should now be available at `http://localhost:3000`.
 ## Production
 
-Build the application for production:
+Build static site for production:
 
 ```bash
 # pnpm
-pnpm run build
+pnpm nuxt generate
 ```
 
 Locally preview production build:
 
 ```bash
 # pnpm
-pnpm run preview
-
+npx serve .output/public 
 ```
+The site should now be available to preview at `http://localhost:3000`.
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
