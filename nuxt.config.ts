@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/test-utils',
     '@nuxt/scripts',
+    '@nuxtjs/i18n'
   ],
 
   css: ['~/assets/css/main.css'],
@@ -25,5 +26,12 @@ export default defineNuxtConfig({
         'jspdf': 'jspdf/dist/jspdf.es.js'
       }
     }
+  },
+  i18n: {
+    defaultLocale: 'en',
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'de', name: 'German', file: 'de.json' }
+    ]
   }
 })

@@ -1,5 +1,7 @@
 import type { Role } from "./role";
 import {v4 as uuidv4} from "uuid";
+import {useI18n} from "vue-i18n";
+
 
 export class Member {
 
@@ -24,15 +26,17 @@ export class Member {
     }
 
     public get primaryList(): string {
+        const i18n = useI18n();
         if( this.primaryRoles.length === 0) {
-            return "No primary roles";
+            return i18n.t("noPrimary");
         }
         return this.primaryRoles.map(role => role.label).join(", ");
     }
 
     public get secondaryList(): string {
+        const i18n = useI18n();
         if( this.secondaryRoles.length === 0) {
-            return "No secondary roles";
+            return i18n.t("noSecondary");
         }
         return this.secondaryRoles.map(role => role.label).join(", ");
     }
