@@ -12,6 +12,7 @@
   "secondaryRoles": "Secondary Roles",
   "emergencyRoles": "Emergency Roles",
   "emergencyRole": "Emergency Role",
+  "newEmergencyRole": "Add New Emergency Role",
   "general": "General",
   "waterLeak": "Water Leakage",
   "fire": "Fire",
@@ -61,5 +62,5 @@
   "throwLifebuoy": "Throw Lifebuoy",
   "startEngine": "Start Engine",
   "conningManoeuvre": "Conning Manoeuvre",
-  "addNewRole": "Add New Emergency Role"
+  "export": "Export"
 }

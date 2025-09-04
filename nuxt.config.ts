@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     locales: [
       { code: 'en', name: 'English', file: 'en.json' , icon: 'i-circle-flags-en' },
-      { code: 'de', name: 'German', file: 'de.json', icon: 'i-circle-flags-de'}
+      { code: 'de', name: 'Deutsch', file: 'de.json', icon: 'i-circle-flags-de'}
     ]
   }
 })

@@ -12,6 +12,7 @@
   "secondaryRoles": "Sekundäre Rollen",
   "emergencyRoles": "Notrollen",
   "emergencyRole": "Notrolle",
+  "newEmergencyRole": "Neue Notrolle hinzufügen",
   "general": "Allgemein",
   "waterLeak": "Wasserleck",
   "fire": "Feuer",
@@ -61,5 +62,5 @@
   "throwLifebuoy": "Rettungsmittel werfen",
   "startEngine": "Motor starten",
   "conningManoeuvre": "Rettungsmanöver fahren",
-  "addNewRole": "Neue Notrolle hinzufügen"
+  "export": "Export"
 }
