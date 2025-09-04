@@ -612,19 +612,19 @@ initRoles();
             <UButton class="absolute rounded-full mx-1 my-4" icon="i-lucide-circle-plus" size="md" color="primary" variant="solid"  :ui="{ base: 'peer' }" @click="addRole(newRoleRef, categoryRef)"/>
 
             <UTooltip text='0118, 999, 881, 999, 119, 7253'>
-              <USeparator label="General" class="my-5" size="xl" :ui="{ label: 'text-lg font-medium' }"/>
+              <USeparator class="my-5" size="xl" :ui="{ label: 'text-lg font-medium' }">{{ $t('general') }}</USeparator>
             </UTooltip>
             <UTable :data="roles?.filter(x => x.category === Category.General)" :columns="roleColumns" class="flex-1" />
 
-            <USeparator label="Water Leakage" class="my-5" size="xl" :ui="{ label: 'text-lg font-medium' }"/>
+            <USeparator class="my-5" size="xl" :ui="{ label: 'text-lg font-medium' }">{{ $t('waterLeak') }}</USeparator>
             <UTable :data="roles?.filter(x => x.category === Category.WaterLeak)" :columns="roleColumns" class="flex-1" />
 
             <UTooltip text='Ooh! Fore! I mean "Five!" I mean "Fire!"'>
-              <USeparator label="Fire" class="my-5" size="xl" :ui="{ label: 'text-lg font-medium' }"/>
+              <USeparator class="my-5" size="xl" :ui="{ label: 'text-lg font-medium' }">{{ $t('fire') }}</USeparator>
             </UTooltip>
             <UTable :data="roles?.filter(x => x.category === Category.Fire)" :columns="roleColumns" class="flex-1" />
 
-            <USeparator label="Person Overboard" class="my-5" size="xl" :ui="{ label: 'text-lg font-medium' }"/>
+            <USeparator class="my-5" size="xl" :ui="{ label: 'text-lg font-medium' }">{{ $t('personOverboard') }}</USeparator>
             <UTable :data="roles?.filter(x => x.category === Category.PersonOverboard)" :columns="roleColumns" class="flex-1" />
 
           </template>
