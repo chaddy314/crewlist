@@ -354,7 +354,7 @@ function getRoleRowItems(row: Row<Role>) {
         const rmIndex = roles.value?.findIndex(role => role.roleName === name);
         roles.value?.splice(rmIndex!, 1);
         toast.add({
-          title: i18n.t("successfullyRomedRole"),
+          title: i18n.t("successfullyRemovedRole"),
           color: 'success',
           icon: 'i-lucide-circle-check',
           description: name + i18n.t("roleRemoved")
