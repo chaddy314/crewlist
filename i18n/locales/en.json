@@ -44,5 +44,21 @@
   "distressRadioCall": "Distress Radio Call",
   "seacock": "Seacock",
   "firstaidkit": "First Aid Kit",
-  "leakDetetionForeship": "Leak Detection Foreship/Toilet"
+  "leakDetectionForeship": "Leak Detection Foreship/Toilet",
+  "leakDetectionSaloon": "Leak Detection Saloon/Pantry",
+  "leakDetectionAft": "Leak Detection Aft Section/Engine",
+  "manualBilgePump": "Manual Bilge Pump",
+  "maritimeDistressSignal": "Maritime Distress Signal",
+  "fireExtinguisher": "Fire Extinguisher",
+  "fireBlanket": "Fire Blanket",
+  "closeGasValve": "Close Gas Valves",
+  "closeFuelValve": "Close Fuel Valve",
+  "disconnectBattery": "Disconnect Battery",
+  "firefighting": "Firefighting/Bailer",
+  "lookout": "Lookout",
+  "markPosition": "Mark Position",
+  "pressMOB": "Press MOB on GPS",
+  "throwLifebuoy": "Throw Lifebuoy",
+  "startEngine": "Start Engine",
+  "conningManoeuvre": "Conning Manoeuvre"
 }

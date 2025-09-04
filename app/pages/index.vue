@@ -49,73 +49,39 @@ function initRoles () {
   roles.value = [];
 
   //  GENERAL
-//  roles.value.push(new Role('Engine Malfunction', Category.General));
-  roles.value.push(new Role('Motorstörung', Category.General));
-//  roles.value.push(new Role('Emergency Tiller', Category.General));
-  roles.value.push(new Role('Notpinne', Category.General));
-//  roles.value.push(new Role('Distress Radio Call', Category.General));
-  roles.value.push(new Role('Seenotfunkspruch', Category.General));
-//  roles.value.push(new Role('Seacock', Category.General));
-  roles.value.push(new Role('Seeventile', Category.General));
-//  roles.value.push(new Role('First Aid Kit', Category.General));
-  roles.value.push(new Role('Verbandskasten', Category.General));
+  roles.value.push(new Role(i18n.t("engineMalfunction"), Category.General));
+  roles.value.push(new Role(i18n.t("emergencyTiller"), Category.General));
+  roles.value.push(new Role(i18n.t("distressRadioCall"), Category.General));
+  roles.value.push(new Role(i18n.t("seacock"), Category.General));
+  roles.value.push(new Role(i18n.t("firstaidkit"), Category.General));
 
   //  WATER LEAKAGE
-//  roles.value.push(new Role('Leak Detection Foreship/Toilet', Category.WaterLeak));
-  roles.value.push(new Role('Lecksuche Vorschiff', Category.WaterLeak));
-//  roles.value.push(new Role('Leak Detection Saloon/Pantry', Category.WaterLeak));
-  roles.value.push(new Role('Lecksuche Salon', Category.WaterLeak));
-//  roles.value.push(new Role('Leak Detection Aft Section/Engine', Category.WaterLeak));
-  roles.value.push(new Role('Lecksuche Achtern', Category.WaterLeak));
-//  roles.value.push(new Role('Manual Bilge Pump', Category.WaterLeak));
-  roles.value.push(new Role('Handlenzpumpe', Category.WaterLeak));
-//  roles.value.push(new Role('Distress Radio Call', Category.WaterLeak));
-  roles.value.push(new Role('Seenotfunkspruch', Category.WaterLeak));
-  roles.value.push(new Role('Seenotsignale', Category.WaterLeak));
+  roles.value.push(new Role(i18n.t("leakDetectionForeship"), Category.WaterLeak));
+  roles.value.push(new Role(i18n.t("leakDetectionSaloon"), Category.WaterLeak));
+  roles.value.push(new Role(i18n.t("leakDetectionAft"), Category.WaterLeak));
+  roles.value.push(new Role(i18n.t("manualBilgePump"), Category.WaterLeak));
+  roles.value.push(new Role(i18n.t("distressRadioCall"), Category.WaterLeak));
+  roles.value.push(new Role(i18n.t("maritimeDistressSignal"), Category.WaterLeak));
 
   //  FIRE
-//  roles.value.push(new Role('Fire Extinguisher', Category.Fire));
-  roles.value.push(new Role('Feuerlöscher', Category.Fire));
-//  roles.value.push(new Role('Fire Blanket', Category.Fire));
-  roles.value.push(new Role('Feuerlöschdecke', Category.Fire));
-//  roles.value.push(new Role('Close Gas Valve', Category.Fire));
-  roles.value.push(new Role('Gasventile schließen', Category.Fire));
-//  roles.value.push(new Role('Close Fuel Valve', Category.Fire));
-  roles.value.push(new Role('Kraftstoffzufuhr schließen', Category.Fire));
-//  roles.value.push(new Role('Disconnect Battery', Category.Fire));
-  roles.value.push(new Role('Batterie abklemmen', Category.Fire));
-//  roles.value.push(new Role('Firefighting/Bailer', Category.Fire));
-  roles.value.push(new Role('Brandbekämpfung', Category.Fire));
-//  roles.value.push(new Role('Distress Radio Call PAN PAN', Category.Fire));
-  roles.value.push(new Role('Seenotfunkspruch', Category.Fire));
-//  roles.value.push(new Role('Maritime Distress Signal', Category.Fire));
-  roles.value.push(new Role('Seenotsignale', Category.Fire));
-  //  PERSON OVERBOARD
-//  roles.value.push(new Role('Lookout', Category.PersonOverboard));
-  roles.value.push(new Role('Ausguck', Category.PersonOverboard));
-//  roles.value.push(new Role('Mark Position', Category.PersonOverboard));
-  roles.value.push(new Role('Position festhalten', Category.PersonOverboard));
-//  roles.value.push(new Role('Press MOB on GPS', Category.PersonOverboard));
-  roles.value.push(new Role('MOB auf GPS drücken', Category.PersonOverboard));
-//  roles.value.push(new Role('Throw Lifebuoy', Category.PersonOverboard));
-  roles.value.push(new Role('Rettungsmittel werfen', Category.PersonOverboard));
-//  roles.value.push(new Role('Start Engine', Category.PersonOverboard));
-  roles.value.push(new Role('Motor starten', Category.PersonOverboard));
-//  roles.value.push(new Role('Conning Manoeuvre', Category.PersonOverboard));
-  roles.value.push(new Role('Rettungsmanöver fahren', Category.PersonOverboard));
-//  roles.value.push(new Role('Emergency Signal', Category.PersonOverboard));
-  roles.value.push(new Role('Seenotfunkspruch', Category.PersonOverboard));
-  roles.value.push(new Role('Seenotsignal', Category.PersonOverboard));
-}
+  roles.value.push(new Role(i18n.t("fireExtinguisher"), Category.Fire));
+  roles.value.push(new Role(i18n.t("fireBlanket"), Category.Fire));
+  roles.value.push(new Role(i18n.t("closeGasValve"), Category.Fire));
+  roles.value.push(new Role(i18n.t("closeFuelValve"), Category.Fire));
+  roles.value.push(new Role(i18n.t("disconnectBattery"), Category.Fire));
+  roles.value.push(new Role(i18n.t("firefighting"), Category.Fire));
+  roles.value.push(new Role(i18n.t("distressRadioCall"), Category.Fire));
+  roles.value.push(new Role(i18n.t("maritimeDistressSignal"), Category.Fire));
 
-function initTestCrew(): void {
-  crew.value.push(new Member('Marc', 'Stahl'));
-  crew.value.push(new Member('Vincent', 'Dünninger'));
-  crew.value.push(new Member('Rosemarie', 'Stahl'));
-  crew.value.push(new Member('Moritz', 'Pfister'));
-  crew.value.push(new Member('Sonja', 'Neufeld'));
-  crew.value.push(new Member('Manuela', 'Schmid'));
-  crew.value.push(new Member('Yannik', 'Herbst'));
+  //  PERSON OVERBOARD
+  roles.value.push(new Role(i18n.t("lookout"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("markPosition"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("pressMOB"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("throwLifebuoy"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("startEngine"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("conningManoeuvre"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("distressRadioCall"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("maritimeDistressSignal"), Category.PersonOverboard));
 }
 
 const items: AccordionItem[] = [
@@ -153,13 +119,13 @@ const crewColumns: TableColumn<Member>[] = [
   {
     accessorKey: 'primaryRoles',
     header: i18n.t("primaryRoles"),
-    cell: ({ row }: { row: Row<Member> }) => row.original.primaryList,
+    cell: ({ row }: { row: Row<Member> }) => row.original.primaryRoles.length > 0 ? row.original.primaryList : i18n.t("noPrimary"),
 
   },
   {
     accessorKey: 'secondaryRoles',
     header: i18n.t("secondaryRoles"),
-    cell: ({ row }: { row: Row<Member> }) => row.original.secondaryList,
+    cell: ({ row }: { row: Row<Member> }) => row.original.secondaryRoles.length > 0 ? row.original.secondaryList : i18n.t("noSecondary"),
   },
   {
     id: 'actions',
@@ -257,7 +223,7 @@ const roleColumns: TableColumn<Role>[] = [
             addCrewToRole(selectedMember, row.original, false);
             toast.add({
               title: i18n.t("secondaryRoleAssigned"),
-              description: `${selectedMember.fullName + i18n.t("assjgnedAsSecondary") + row.original.roleName}`,
+              description: `${selectedMember.fullName + i18n.t("assignedAsSecondary") + row.original.roleName}`,
               color: 'success',
             });
           } else {
@@ -456,8 +422,8 @@ function exportAsPDF() {
     body: crew.value?.map(member => [
       member.firstName,
       member.lastName,
-      member.primaryList || 'N/A',
-      member.secondaryList || 'N/A'
+      member.primaryRoles.length > 0 ? member.primaryList : i18n.t("noPrimary") || 'N/A',
+      member.secondaryRoles.length > 0 ? member.secondaryList : i18n.t("noSecondary") || 'N/A'
     ]) || [],
     theme: 'striped',
     styles: { fontSize: 12 },
@@ -477,7 +443,7 @@ function exportAsPDF() {
   doc.setFontSize(12);
   autoTable(doc, {
     startY: y,
-    head: [[i18n.t("roleName"), i18n.t("primaryMember"), i18n.t("secondaryMember")]],
+    head: [[i18n.t("role"), i18n.t("primaryMember"), i18n.t("secondaryMember")]],
     body: roles.value?.filter(role => role.category === Category.General).map(role => [
       role.roleName,
       role.primaryMember?.fullName || 'N/A',
@@ -500,7 +466,7 @@ function exportAsPDF() {
   doc.setFontSize(12);
   autoTable(doc, {
     startY: y,
-    head: [[i18n.t("roleName"), i18n.t("primaryMember"), i18n.t("secondaryMember")]],
+    head: [[i18n.t("role"), i18n.t("primaryMember"), i18n.t("secondaryMember")]],
     body: roles.value?.filter(role => role.category === Category.WaterLeak).map(role => [
       role.roleName,
       role.primaryMember?.fullName || 'N/A',
@@ -523,7 +489,7 @@ function exportAsPDF() {
   doc.setFontSize(12);
   autoTable(doc, {
     startY: y,
-    head: [[i18n.t("roleName"), i18n.t("primaryMember"), i18n.t("secondaryMember")]],
+    head: [[i18n.t("role"), i18n.t("primaryMember"), i18n.t("secondaryMember")]],
     body: roles.value?.filter(role => role.category === Category.Fire).map(role => [
       role.roleName,
       role.primaryMember?.fullName || 'N/A',
@@ -545,7 +511,7 @@ function exportAsPDF() {
   doc.setFontSize(12);
   autoTable(doc, {
     startY: y,
-    head: [[i18n.t("roleName"), i18n.t("primaryMember"), i18n.t("secondaryMember")]],
+    head: [[i18n.t("role"), i18n.t("primaryMember"), i18n.t("secondaryMember")]],
     body: roles.value?.filter(role => role.category === Category.PersonOverboard).map(role => [
       role.roleName,
       role.primaryMember?.fullName || 'N/A',
@@ -566,9 +532,6 @@ function exportAsPDF() {
   });
 }
 
-
-
-initTestCrew();
 initRoles();
 </script>
 
@@ -578,10 +541,19 @@ initRoles();
       <h1 class="font-bold text-2xl text-(--ui-primary)">
         {{ $t('membersandroles') }}
       </h1>
-      <ColorModeButton/>
-      <button v-for="locale in locales" @click="setLocale(locale.code)">
-        {{ locale.name }}
-      </button>
+      <div class="flex flex-row items-center justify-center gap-2 mt-2">
+        <ColorModeButton/>
+        <UButton
+            v-for="locale in locales"
+            :key="locale.code"
+            color="neutral"
+            variant="ghost"
+            :icon="locale.icon"
+            @click="setLocale(locale.code)"
+        >
+          {{ locale.name }}
+          </UButton>
+      </div>
       <UContainer class="flex flex-col items-center justify-center gap-4 w-full">
         <UAccordion v-model="active" type="multiple" :unmount-on-hide="false" :items="items" @update:model-value="handleAccordionChange">
           <template #cruise="{ item }">
@@ -657,7 +629,9 @@ initRoles();
 
           </template>
           <template #export="{ item }">
-            <UButton label="Save as PDF" class="absolute rounded-full mx-1 my-4" icon="i-lucide-printer" size="md" color="primary" variant="solid"  :ui="{ base: 'peer' }" @click="exportAsPDF"/>
+            <UButton class="absolute rounded-full mx-1 my-4" icon="i-lucide-printer" size="md" color="primary" variant="solid"  :ui="{ base: 'peer' }" @click="exportAsPDF">
+              {{ $t('saveAsPDF') }}
+            </UButton>
           </template>
         </UAccordion>
       </UContainer>

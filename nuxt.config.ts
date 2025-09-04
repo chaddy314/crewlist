@@ -30,8 +30,8 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: 'en',
     locales: [
-      { code: 'en', name: 'English', file: 'en.json' },
-      { code: 'de', name: 'German', file: 'de.json' }
+      { code: 'en', name: 'English', file: 'en.json' , icon: 'i-circle-flags-en' },
+      { code: 'de', name: 'German', file: 'de.json', icon: 'i-circle-flags-de'}
     ]
   }
 })
