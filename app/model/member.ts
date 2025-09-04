@@ -25,14 +25,14 @@ export class Member {
 
     public get primaryList(): string {
         if( this.primaryRoles.length === 0) {
-            return "No primary roles";
+            return "";
         }
         return this.primaryRoles.map(role => role.label).join(", ");
     }
 
     public get secondaryList(): string {
         if( this.secondaryRoles.length === 0) {
-            return "No secondary roles";
+            return "";
         }
         return this.secondaryRoles.map(role => role.label).join(", ");
     }

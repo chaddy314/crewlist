@@ -10,6 +10,9 @@ import { jsPDF } from "jspdf";
 import { autoTable } from 'jspdf-autotable';
 import sailingLogo from '~/assets/sailing_logo.png';
 import ColorModeButton from "~/util/ColorModeButton.vue";
+import {useI18n} from "vue-i18n";
+
+const i18n = useI18n();
 
 
 const active = ref(['0','1', '2', '3']);
@@ -39,76 +42,61 @@ const roles = ref<Role[]>();
 
 const UButton = resolveComponent('UButton');
 const UDropdownMenu = resolveComponent('UDropdownMenu');
-
+const { locales, setLocale } = useI18n();
 
 function initRoles () {
 
   roles.value = [];
 
   //  GENERAL
-  roles.value.push(new Role('Enginge Malfunction', Category.General));
-  roles.value.push(new Role('Emergency Tiller', Category.General));
-  roles.value.push(new Role('Distress Radio Call', Category.General));
-//  roles.value.push(new Role('Distress Radio Call PAN PAN', Category.General));
-//  roles.value.push(new Role('Distress Radio Call MAYDAY', Category.General));
-  roles.value.push(new Role('Maritime Distress Signal', Category.General));
-  roles.value.push(new Role('Seacock', Category.General));
-  roles.value.push(new Role('First Aid Kit', Category.General));
+  roles.value.push(new Role(i18n.t("engineMalfunction"), Category.General));
+  roles.value.push(new Role(i18n.t("emergencyTiller"), Category.General));
+  roles.value.push(new Role(i18n.t("distressRadioCall"), Category.General));
+  roles.value.push(new Role(i18n.t("seacock"), Category.General));
+  roles.value.push(new Role(i18n.t("firstaidkit"), Category.General));
 
   //  WATER LEAKAGE
-  roles.value.push(new Role('Leak Detection Foreship/Toilet', Category.WaterLeak));
-  roles.value.push(new Role('Leak Detection Saloon/Pantry', Category.WaterLeak));
-  roles.value.push(new Role('Leak Detection Aft Section/Engine', Category.WaterLeak));
-  roles.value.push(new Role('Electric Bilge Pump', Category.WaterLeak));
-  roles.value.push(new Role('Manual Bilge Pump', Category.WaterLeak));
-  roles.value.push(new Role('Distress Radio Call PAN PAN', Category.WaterLeak));
-  roles.value.push(new Role('Maritime Distress Signal', Category.WaterLeak));
+  roles.value.push(new Role(i18n.t("leakDetectionForeship"), Category.WaterLeak));
+  roles.value.push(new Role(i18n.t("leakDetectionSaloon"), Category.WaterLeak));
+  roles.value.push(new Role(i18n.t("leakDetectionAft"), Category.WaterLeak));
+  roles.value.push(new Role(i18n.t("manualBilgePump"), Category.WaterLeak));
+  roles.value.push(new Role(i18n.t("distressRadioCall"), Category.WaterLeak));
+  roles.value.push(new Role(i18n.t("maritimeDistressSignal"), Category.WaterLeak));
 
   //  FIRE
-  roles.value.push(new Role('Fire Extinguisher', Category.Fire));
-  roles.value.push(new Role('Fire Blanket', Category.Fire));
-  roles.value.push(new Role('Close Gas Valve', Category.Fire));
-  roles.value.push(new Role('Close Fuel Valve', Category.Fire));
-  roles.value.push(new Role('Disconnect Battery', Category.Fire));
-  roles.value.push(new Role('Firefighting/Bailer', Category.Fire));
-  roles.value.push(new Role('Distress Radio Call PAN PAN', Category.Fire));
-  roles.value.push(new Role('Maritime Distress Signal', Category.Fire));
+  roles.value.push(new Role(i18n.t("fireExtinguisher"), Category.Fire));
+  roles.value.push(new Role(i18n.t("fireBlanket"), Category.Fire));
+  roles.value.push(new Role(i18n.t("closeGasValve"), Category.Fire));
+  roles.value.push(new Role(i18n.t("closeFuelValve"), Category.Fire));
+  roles.value.push(new Role(i18n.t("disconnectBattery"), Category.Fire));
+  roles.value.push(new Role(i18n.t("firefighting"), Category.Fire));
+  roles.value.push(new Role(i18n.t("distressRadioCall"), Category.Fire));
+  roles.value.push(new Role(i18n.t("maritimeDistressSignal"), Category.Fire));
 
   //  PERSON OVERBOARD
-  roles.value.push(new Role('All Hands On Deck', Category.PersonOverboard));
-  roles.value.push(new Role('Lookout', Category.PersonOverboard));
-  roles.value.push(new Role('Hold Position', Category.PersonOverboard));
-  roles.value.push(new Role('Hold MOB on GPS', Category.PersonOverboard));
-  roles.value.push(new Role('Throw Lifebuoy', Category.PersonOverboard));
-  roles.value.push(new Role('Start Engine', Category.PersonOverboard));
-  roles.value.push(new Role('Conning Manoeuvre', Category.PersonOverboard));
-  roles.value.push(new Role('Distress Radio Call MAYDAY', Category.PersonOverboard));
-  roles.value.push(new Role('Distress Signal', Category.PersonOverboard));
-}
-
-function initTestCrew(): void {
-  crew.value.push(new Member('Marc', 'Stahl'));
-  crew.value.push(new Member('Vincent', 'Dünninger'));
-  crew.value.push(new Member('Rosemarie', 'Stahl'));
-  crew.value.push(new Member('Moritz', 'Pfister'));
-  crew.value.push(new Member('Sonja', 'Neufeld'));
-  crew.value.push(new Member('Manuela', 'Schmid'));
-  crew.value.push(new Member('Yannik', 'Herbst'));
+  roles.value.push(new Role(i18n.t("lookout"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("markPosition"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("pressMOB"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("throwLifebuoy"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("startEngine"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("conningManoeuvre"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("distressRadioCall"), Category.PersonOverboard));
+  roles.value.push(new Role(i18n.t("maritimeDistressSignal"), Category.PersonOverboard));
 }
 
 const items: AccordionItem[] = [
   {
-    label: 'Cruise Details',
+    label: i18n.t("cruise_details"),
     icon: 'i-lucide-ship',
     slot: 'cruise' as const,
   },
   {
-    label: 'Crew Members',
+    label: i18n.t("crewMembers"),
     icon: 'i-lucide-users',
     slot: 'crew' as const,
   },
   {
-    label: 'Emergency Roles',
+    label: i18n.t("emergencyRoles"),
     icon: 'i-lucide-life-buoy',
     slot: 'roles' as const,
   },
@@ -122,22 +110,22 @@ const items: AccordionItem[] = [
 const crewColumns: TableColumn<Member>[] = [
   {
     accessorKey: 'firstName',
-    header: 'First Name',
+    header: i18n.t("firstName"),
   },
   {
     accessorKey: 'lastName',
-    header: 'Last Name',
+    header: i18n.t("lastName"),
   },
   {
     accessorKey: 'primaryRoles',
-    header: 'Primary Roles',
-    cell: ({ row }: { row: Row<Member> }) => row.original.primaryList,
+    header: i18n.t("primaryRoles"),
+    cell: ({ row }: { row: Row<Member> }) => row.original.primaryRoles.length > 0 ? row.original.primaryList : i18n.t("noPrimary"),
 
   },
   {
     accessorKey: 'secondaryRoles',
-    header: 'Secondary Roles',
-    cell: ({ row }: { row: Row<Member> }) => row.original.secondaryList,
+    header: i18n.t("secondaryRoles"),
+    cell: ({ row }: { row: Row<Member> }) => row.original.secondaryRoles.length > 0 ? row.original.secondaryList : i18n.t("noSecondary"),
   },
   {
     id: 'actions',
@@ -181,17 +169,17 @@ function addCrewToRole(crewMember: Member, role: Role, isPrimary: boolean) {
 const roleColumns: TableColumn<Role>[] = [
   {
     accessorKey: 'roleName',
-    header: 'Role',
+    header: i18n.t("role"),
   },
   {
     accessorKey: 'primaryRoles',
-    header: 'Primary Roles',
+    header: i18n.t("primaryRoles"),
     cell: ({ row }) => {
       return h(resolveComponent('USelect'), {
         modelValue: row.original.primaryMember?.id ?? null,
         multiple: false,
         class: 'w-full',
-        placeholder: 'Select primary crew',
+        placeholder: i18n.t("selectPrimary"),
         items: crew.value?.map(member => ({
           label: member.fullName,
           value: member.id // Use a unique id property
@@ -201,14 +189,14 @@ const roleColumns: TableColumn<Role>[] = [
           if (selectedMember) {
             addCrewToRole(selectedMember, row.original, true);
             toast.add({
-              title: 'Primary Role Assigned',
-              description: `${selectedMember.fullName} assigned as primary for ${row.original.roleName}`,
+              title: i18n.t("primaryRoleAssigned"),
+              description: `${selectedMember.fullName + i18n.t("assignedAsPrimary") + row.original.roleName}`,
               color: 'success',
             });
           } else {
             toast.add({
               title: 'Error',
-              description: 'No crew member selected.',
+              description: i18n.t("noCrewSelected"),
               color: 'error',
             });
           }
@@ -218,13 +206,13 @@ const roleColumns: TableColumn<Role>[] = [
   },
   {
     accessorKey: 'secondaryRoles',
-    header: 'Secondary Roles',
+    header: i18n.t("secondaryRoles"),
     cell: ({ row }) => {
       return h(resolveComponent('USelect'), {
         modelValue: row.original.secondaryMember?.id ?? null,
         multiple: false,
         class: 'w-full',
-        placeholder: 'Select secondary crew',
+        placeholder: i18n.t("selectSecondary"),
         items: crew.value?.map(member => ({
           label: member.fullName,
           value: member.id // Use a unique id property
@@ -234,14 +222,14 @@ const roleColumns: TableColumn<Role>[] = [
           if (selectedMember) {
             addCrewToRole(selectedMember, row.original, false);
             toast.add({
-              title: 'Secondary Role Assigned',
-              description: `${selectedMember.fullName} assigned as secondary for ${row.original.roleName}`,
+              title: i18n.t("secondaryRoleAssigned"),
+              description: `${selectedMember.fullName + i18n.t("assignedAsSecondary") + row.original.roleName}`,
               color: 'success',
             });
           } else {
             toast.add({
               title: 'Error',
-              description: 'No crew member selected.',
+              description: i18n.t("noCrewSelected"),
               color: 'error',
             });
           }
@@ -286,18 +274,18 @@ function addCrew(firstName: string, lastName: string) {
 
   if((firstNameRef.value + lastNameRef.value).trim() == '') {
     toast.add({
-      title: 'Crew Members',
+      title: i18n.t("crewMembers"),
       icon: 'i-lucide-zap',
       color: 'error',
-      description: 'Please add a name for the crew member.',
+      description: i18n.t("errorMemberName"),
     });
     return;
   }
 
   crew.value.push(new Member(firstName, lastName));
   toast.add({
-    title: 'Crew Members',
-    description: 'Succesfully added Crew Member ' + firstNameRef.value + ' ' + lastNameRef.value,
+    title: i18n.t("crewMembers"),
+    description: i18n.t("successfullyAddedMember") + firstNameRef.value + ' ' + lastNameRef.value,
   });
   firstNameRef.value = '';
   lastNameRef.value = '';
@@ -316,10 +304,10 @@ function addRole(roleName: string, roleCategory: Category) {
 
   if(newRoleRef.value.trim() == '') {
     toast.add({
-      title: 'Role',
+      title: i18n.t("role"),
       icon: 'i-lucide-zap',
       color: 'error',
-      description: 'Roles should have a name',
+      description: i18n.t("errorRoleName"),
     });
     return;
   }
@@ -331,7 +319,7 @@ function addRole(roleName: string, roleCategory: Category) {
 
   roles.value.push(new Role(roleName, roleCategory));
   toast.add({
-    title: 'Crew Members',
+    title: i18n.t("crewMembers"),
     description: 'Succesfully added role ' + newRoleRef.value + ' to category ' + categoryRef.value,
   });
   newRoleRef.value = '';
@@ -340,16 +328,16 @@ function addRole(roleName: string, roleCategory: Category) {
 function getCrewRowItems(row: Row<Member>) {
   return [
     {
-      label: 'Remove from Crew',
+      label: i18n.t("removeCrew"),
       icon: 'i-lucide-delete',
       onSelect() {
         const name = crew.value![row.index]!.firstName + ' ' + crew.value![row.index]!.lastName;
         crew.value?.splice(row.index, 1);
         toast.add({
-          title: 'Crew Member Removed!',
+          title: i18n.t("successfullyRemovedCrew"),
           color: 'success',
           icon: 'i-lucide-circle-check',
-          description: name + ' removed from Crew'
+          description: name + i18n.t("crewRemoved")
         })
       }
     },
@@ -359,17 +347,17 @@ function getCrewRowItems(row: Row<Member>) {
 function getRoleRowItems(row: Row<Role>) {
   return [
     {
-      label: 'Remove from Roles',
+      label: i18n.t("removeRole"),
       icon: 'i-lucide-delete',
       onSelect() {
         const name = row.getValue('roleName');
         const rmIndex = roles.value?.findIndex(role => role.roleName === name);
         roles.value?.splice(rmIndex!, 1);
         toast.add({
-          title: 'Role Removed!',
+          title: i18n.t("successfullyRomedRole"),
           color: 'success',
           icon: 'i-lucide-circle-check',
-          description: name + ' removed from Roles'
+          description: name + i18n.t("roleRemoved")
         })
       }
     },
@@ -383,13 +371,13 @@ const handleAccordionChange = () => {
 
 
 function exportAsPDF() {
-const doc = new jsPDF;
+  const doc = new jsPDF;
   let y = 20;
   const lineHeight = 10;
 
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
-  doc.text('Crew Members & Emergency Roles', 105, y, { align: 'center' } );
+  doc.text(i18n.t("membersandroles"), 105, y, { align: 'center' } );
   y += lineHeight * 2;
 
   doc.setFontSize(16);
@@ -400,11 +388,11 @@ const doc = new jsPDF;
     startY: y,
     head: [['','']],
     body: [
-        ['Ship Name', shipName.value ? shipName.value : 'N/A'],
-        ['Call Sign', callSign.value ? callSign.value : 'N/A'],
+        [i18n.t("shipName"), shipName.value ? shipName.value : 'N/A'],
+        [i18n.t("callSign"), callSign.value ? callSign.value : 'N/A'],
         ['MMSI', MMSI.value ? MMSI.value : 'N/A'],
-        ['Cruise Begin Date', beginDate.value ? beginDate.value : 'N/A'],
-        ['Cruise End Date', endDate.value ? endDate.value : 'N/A']
+        [i18n.t("cruiseBegin"), beginDate.value ? beginDate.value : 'N/A'],
+        [i18n.t("cruiseEnd"), endDate.value ? endDate.value : 'N/A']
     ],
     columnStyles: { 0: { halign: 'left' }, 1: { halign: 'center' , fontStyle: 'bold', } },
     theme: 'plain',
@@ -422,7 +410,7 @@ const doc = new jsPDF;
   y = 20;
   doc.setFontSize(16);
   doc.setFont('helvetica', 'bold');
-  doc.text('Crew Members', 10, y);
+  doc.text(i18n.t("crewMembers"), 10, y);
   y += lineHeight;
 
   doc.setFont('helvetica', 'normal');
@@ -430,12 +418,12 @@ const doc = new jsPDF;
 
   autoTable(doc, {
     startY: y,
-    head: [['First Name', 'Last Name', 'Primary Roles', 'Secondary Roles']],
+    head: [[i18n.t("firstName"), i18n.t("lastName"), i18n.t("primaryRoles"), i18n.t("secondaryRoles")]],
     body: crew.value?.map(member => [
       member.firstName,
       member.lastName,
-      member.primaryList || 'N/A',
-      member.secondaryList || 'N/A'
+      member.primaryRoles.length > 0 ? member.primaryList : i18n.t("noPrimary") || 'N/A',
+      member.secondaryRoles.length > 0 ? member.secondaryList : i18n.t("noSecondary") || 'N/A'
     ]) || [],
     theme: 'striped',
     styles: { fontSize: 12 },
@@ -448,14 +436,14 @@ const doc = new jsPDF;
   y = 20;
   doc.setFontSize(16);
   doc.setFont('helvetica', 'bold');
-  doc.text('Emergency Roles - General', 10, y);
+  doc.text(i18n.t("emergencyRoles")+ ' - ' + i18n.t("general"), 10, y);
   y += lineHeight;
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(12);
   autoTable(doc, {
     startY: y,
-    head: [['Role Name', 'Primary Member', 'Secondary Member']],
+    head: [[i18n.t("role"), i18n.t("primaryMember"), i18n.t("secondaryMember")]],
     body: roles.value?.filter(role => role.category === Category.General).map(role => [
       role.roleName,
       role.primaryMember?.fullName || 'N/A',
@@ -471,14 +459,14 @@ const doc = new jsPDF;
   y = doc.lastAutoTable.finalY +  lineHeight;
   doc.setFontSize(16);
   doc.setFont('helvetica', 'bold');
-  doc.text('Emergency Roles - Water Leakage', 10, y);
+  doc.text(i18n.t("emergencyRoles")+ ' - ' + i18n.t("waterLeak"), 10, y);
   y += lineHeight;
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(12);
   autoTable(doc, {
     startY: y,
-    head: [['Role Name', 'Primary Member', 'Secondary Member']],
+    head: [[i18n.t("role"), i18n.t("primaryMember"), i18n.t("secondaryMember")]],
     body: roles.value?.filter(role => role.category === Category.WaterLeak).map(role => [
       role.roleName,
       role.primaryMember?.fullName || 'N/A',
@@ -494,14 +482,14 @@ const doc = new jsPDF;
   y = 20;
   doc.setFontSize(16);
   doc.setFont('helvetica', 'bold');
-  doc.text('Emergency Roles - Fire', 10, y);
+  doc.text(i18n.t("emergencyRoles")+ ' - ' + i18n.t("fire"), 10, y);
   y += lineHeight;
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(12);
   autoTable(doc, {
     startY: y,
-    head: [['Role Name', 'Primary Member', 'Secondary Member']],
+    head: [[i18n.t("role"), i18n.t("primaryMember"), i18n.t("secondaryMember")]],
     body: roles.value?.filter(role => role.category === Category.Fire).map(role => [
       role.roleName,
       role.primaryMember?.fullName || 'N/A',
@@ -516,14 +504,14 @@ const doc = new jsPDF;
   y = doc.lastAutoTable.finalY +  lineHeight;
   doc.setFontSize(16);
   doc.setFont('helvetica', 'bold');
-  doc.text('Emergency Roles - Person Overboard', 10, y);
+  doc.text(i18n.t("emergencyRoles")+ ' - ' + i18n.t("personOverboard"), 10, y);
   y += lineHeight;
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(12);
   autoTable(doc, {
     startY: y,
-    head: [['Role Name', 'Primary Member', 'Secondary Member']],
+    head: [[i18n.t("role"), i18n.t("primaryMember"), i18n.t("secondaryMember")]],
     body: roles.value?.filter(role => role.category === Category.PersonOverboard).map(role => [
       role.roleName,
       role.primaryMember?.fullName || 'N/A',
@@ -544,9 +532,6 @@ const doc = new jsPDF;
   });
 }
 
-
-
-//initTestCrew();
 initRoles();
 </script>
 
@@ -554,21 +539,33 @@ initRoles();
   <div class="">
     <div class="flex flex-col items-center justify-center gap-4 min-h-screen">
       <h1 class="font-bold text-2xl text-(--ui-primary)">
-        Crew Members & Emergency Roles
+        {{ $t('membersandroles') }}
       </h1>
-      <ColorModeButton/>
+      <div class="flex flex-row items-center justify-center gap-2 mt-2">
+        <ColorModeButton/>
+        <UButton
+            v-for="locale in locales"
+            :key="locale.code"
+            color="neutral"
+            variant="ghost"
+            :icon="locale.icon"
+            @click="setLocale(locale.code)"
+        >
+          {{ locale.name }}
+          </UButton>
+      </div>
       <UContainer class="flex flex-col items-center justify-center gap-4 w-full">
         <UAccordion v-model="active" type="multiple" :unmount-on-hide="false" :items="items" @update:model-value="handleAccordionChange">
           <template #cruise="{ item }">
             <br/>
             <UInput ref="shipNameInput" v-model="shipName" placeholder="" :ui="{ base: 'peer' }" @keyup.enter="callSignInput!.$el.querySelector('input')?.focus()">
               <label class="pointer-events-none absolute left-0 -top-2.5 text-highlighted text-xs font-medium px-1.5 transition-all peer-focus:-top-2.5 peer-focus:text-highlighted peer-focus:text-xs peer-focus:font-medium peer-placeholder-shown:text-sm peer-placeholder-shown:text-dimmed peer-placeholder-shown:top-1.5 peer-placeholder-shown:font-normal">
-                <span class="inline-flex bg-default px-1">Ship Name</span>
+                <span class="inline-flex bg-default px-1">{{ $t('shipName') }}</span>
               </label>
             </UInput><br/>
             <UInput ref="callSignInput" v-model="callSign" placeholder="" :ui="{ base: 'peer' }" @keyup.enter="MMSIInput!.$el.querySelector('input')?.focus()">
               <label class="pointer-events-none absolute left-0 -top-2.5 text-highlighted text-xs font-medium px-1.5 transition-all peer-focus:-top-2.5 peer-focus:text-highlighted peer-focus:text-xs peer-focus:font-medium peer-placeholder-shown:text-sm peer-placeholder-shown:text-dimmed peer-placeholder-shown:top-1.5 peer-placeholder-shown:font-normal">
-                <span class="inline-flex bg-default px-1">Call Sign</span>
+                <span class="inline-flex bg-default px-1">{{ $t('callSign') }}</span>
               </label>
             </UInput><br/>
             <UInput ref="MMSIInput" v-model="MMSI" placeholder="" :ui="{ base: 'peer' }" @keyup.enter="beginDateInput!.$el.querySelector('input')?.focus()">
@@ -578,12 +575,12 @@ initRoles();
             </UInput><br/>
             <UInput ref="beginDateInput" v-model="beginDate" v-maska="'##.##.####'" placeholder="DD.MM.YYYY" :ui="{ base: 'peer' }" @keyup.enter="endDateInput!.$el.querySelector('input')?.focus()">
               <label class="pointer-events-none absolute left-0 -top-2.5 text-highlighted text-xs font-medium px-1.5 transition-all peer-focus:-top-2.5 peer-focus:text-highlighted peer-focus:text-xs peer-focus:font-medium peer-placeholder-shown:text-sm peer-placeholder-shown:text-dimmed peer-placeholder-shown:top-1.5 peer-placeholder-shown:font-normal">
-                <span class="inline-flex bg-default px-1">Cruise Begin Date</span>
+                <span class="inline-flex bg-default px-1">{{ $t('cruiseBegin') }}</span>
               </label>
             </UInput><br/>
             <UInput ref="endDateInput" v-model="endDate" v-maska="'##.##.####'" placeholder="DD.MM.YYYY" :ui="{ base: 'peer' }">
               <label class="pointer-events-none absolute left-0 -top-2.5 text-highlighted text-xs font-medium px-1.5 transition-all peer-focus:-top-2.5 peer-focus:text-highlighted peer-focus:text-xs peer-focus:font-medium peer-placeholder-shown:text-sm peer-placeholder-shown:text-dimmed peer-placeholder-shown:top-1.5 peer-placeholder-shown:font-normal">
-                <span class="inline-flex bg-default px-1">Cruise End Date</span>
+                <span class="inline-flex bg-default px-1">{{ $t('cruiseEnd') }}</span>
               </label>
             </UInput>
 
@@ -592,12 +589,12 @@ initRoles();
           <template #crew="{ item }">
             <UInput ref="firstNameInput" v-model="firstNameRef" class="my-4" placeholder="" :ui="{ base: 'peer' }" @keyup.enter="lastNameInput!.$el.querySelector('input')?.focus()">
               <label class="pointer-events-none absolute left-0 -top-2.5 text-highlighted text-xs font-medium px-1.5 transition-all peer-focus:-top-2.5 peer-focus:text-highlighted peer-focus:text-xs peer-focus:font-medium peer-placeholder-shown:text-sm peer-placeholder-shown:text-dimmed peer-placeholder-shown:top-1.5 peer-placeholder-shown:font-normal">
-                <span class="inline-flex bg-default px-1">First Name</span>
+                <span class="inline-flex bg-default px-1">{{ $t('firstName') }}</span>
               </label>
             </UInput>
             <UInput ref="lastNameInput" v-model="lastNameRef" placeholder="" :ui="{ base: 'peer' }" @keyup.enter="addCrew(firstNameRef, lastNameRef); firstNameInput!.$el.querySelector('input')?.focus()">
               <label class="pointer-events-none absolute left-0 -top-2.5 text-highlighted text-xs font-medium px-1.5 transition-all peer-focus:-top-2.5 peer-focus:text-highlighted peer-focus:text-xs peer-focus:font-medium peer-placeholder-shown:text-sm peer-placeholder-shown:text-dimmed peer-placeholder-shown:top-1.5 peer-placeholder-shown:font-normal">
-                <span class="inline-flex bg-default px-1">Last Name</span>
+                <span class="inline-flex bg-default px-1">{{ $t('lastName') }}</span>
               </label>
             </UInput>
             <UButton class="absolute rounded-full mx-1 my-4" icon="i-lucide-circle-plus" size="md" color="primary" variant="solid"  :ui="{ base: 'peer' }" @click="addCrew(firstNameRef, lastNameRef)"/>
@@ -608,7 +605,7 @@ initRoles();
             <USeparator label="Add New Emergency Role" class="my-5" size="xl" :ui="{ label: 'text-lg font-medium' }"/>
             <UInput v-model="newRoleRef" class="my-4" placeholder="" :ui="{ base: 'peer' }">
               <label class="pointer-events-none absolute left-0 -top-2.5 text-highlighted text-xs font-medium px-1.5 transition-all peer-focus:-top-2.5 peer-focus:text-highlighted peer-focus:text-xs peer-focus:font-medium peer-placeholder-shown:text-sm peer-placeholder-shown:text-dimmed peer-placeholder-shown:top-1.5 peer-placeholder-shown:font-normal">
-                <span class="inline-flex bg-default px-1">Emergency Role</span>
+                <span class="inline-flex bg-default px-1">{{ $t('emergencyRole') }}</span>
               </label>
             </UInput>
             <USelect v-model="categoryRef" :items="Object.values(Category).filter(x => typeof x === 'string')" class="w-48" />
@@ -632,7 +629,9 @@ initRoles();
 
           </template>
           <template #export="{ item }">
-            <UButton label="Save as PDF" class="absolute rounded-full mx-1 my-4" icon="i-lucide-printer" size="md" color="primary" variant="solid"  :ui="{ base: 'peer' }" @click="exportAsPDF"/>
+            <UButton class="absolute rounded-full mx-1 my-4" icon="i-lucide-printer" size="md" color="primary" variant="solid"  :ui="{ base: 'peer' }" @click="exportAsPDF">
+              {{ $t('saveAsPDF') }}
+            </UButton>
           </template>
         </UAccordion>
       </UContainer>

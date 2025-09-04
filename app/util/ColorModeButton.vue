@@ -18,7 +18,7 @@ const isDark = computed({
         color="neutral"
         variant="ghost"
         @click="isDark = !isDark"
-    />
+    >{{ isDark ? 'Dark mode' : 'Light mode' }}</UButton>
 
     <template #fallback>
       <div class="size-8" />
