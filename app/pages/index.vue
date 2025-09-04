@@ -602,7 +602,7 @@ initRoles();
           </template>
           <template #roles="{ item }">
 
-            <USeparator label="Add New Emergency Role" class="my-5" size="xl" :ui="{ label: 'text-lg font-medium' }"/>
+            <USeparator class="my-5" size="xl" :ui="{ label: 'text-lg font-medium' }">{{ $t('addNewRole') }}</USeparator>
             <UInput v-model="newRoleRef" class="my-4" placeholder="" :ui="{ base: 'peer' }">
               <label class="pointer-events-none absolute left-0 -top-2.5 text-highlighted text-xs font-medium px-1.5 transition-all peer-focus:-top-2.5 peer-focus:text-highlighted peer-focus:text-xs peer-focus:font-medium peer-placeholder-shown:text-sm peer-placeholder-shown:text-dimmed peer-placeholder-shown:top-1.5 peer-placeholder-shown:font-normal">
                 <span class="inline-flex bg-default px-1">{{ $t('emergencyRole') }}</span>

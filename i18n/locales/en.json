@@ -60,5 +60,6 @@
   "pressMOB": "Press MOB on GPS",
   "throwLifebuoy": "Throw Lifebuoy",
   "startEngine": "Start Engine",
-  "conningManoeuvre": "Conning Manoeuvre"
+  "conningManoeuvre": "Conning Manoeuvre",
+  "addNewRole": "Add New Emergency Role"
 }
